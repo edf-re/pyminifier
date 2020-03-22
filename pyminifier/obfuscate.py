@@ -68,7 +68,7 @@ def obfuscation_machine(use_unicode=False, identifier_length=1):
                 last_orientation = orientation
     else:
         combined = lowercase + uppercase
-    shuffle(combined) # Randomize it all to keep things interesting
+    #shuffle(combined) # Randomize it all to keep things interesting
     while True:
         for perm in permutations(combined, identifier_length):
             perm = "".join(perm)
@@ -621,7 +621,7 @@ def obfuscate_global_import_methods(module, tokens, name_generator, table=None):
                             tokens[index+1][1] = ""
                             tokens[index+2][1] = ""
     # Insert our map of replacement=what after each respective module import
-    for module_method, replacement in replacement_dict.items():
+    for module_method, replacement in sorted(replacement_dict.items()):
         indents = []
         index = 0
         for tok in tokens[:]:
